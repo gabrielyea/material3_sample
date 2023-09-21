@@ -18,6 +18,7 @@ class Home extends StatefulWidget {
     required this.colorSelected,
     required this.handleBrightnessChange,
     required this.handleMaterialVersionChange,
+    required this.handleThemeChange,
     required this.handleColorSelect,
     required this.handleImageSelect,
     required this.colorSelectionMethod,
@@ -31,6 +32,7 @@ class Home extends StatefulWidget {
   final ColorSelectionMethod colorSelectionMethod;
 
   final void Function(bool useLightMode) handleBrightnessChange;
+  final void Function() handleThemeChange;
   final void Function() handleMaterialVersionChange;
   final void Function(int value) handleColorSelect;
   final void Function(int value) handleImageSelect;
@@ -83,15 +85,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         showMediumSizeLayout = true;
         showLargeSizeLayout = false;
       }
-      if (status != AnimationStatus.forward &&
-          status != AnimationStatus.completed) {
+      if (status != AnimationStatus.forward && status != AnimationStatus.completed) {
         controller.forward();
       }
     } else {
       showMediumSizeLayout = false;
       showLargeSizeLayout = false;
-      if (status != AnimationStatus.reverse &&
-          status != AnimationStatus.dismissed) {
+      if (status != AnimationStatus.reverse && status != AnimationStatus.dismissed) {
         controller.reverse();
       }
     }
@@ -107,8 +107,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     });
   }
 
-  Widget createScreenFor(
-      ScreenSelected screenSelected, bool showNavBarExample) {
+  Widget createScreenFor(ScreenSelected screenSelected, bool showNavBarExample) {
     switch (screenSelected) {
       case ScreenSelected.component:
         return Expanded(
@@ -134,11 +133,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   PreferredSizeWidget createAppBar() {
     return AppBar(
-      title: widget.useMaterial3
-          ? const Text('Material 3')
-          : const Text('Material 2'),
+      title: widget.useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
       actions: !showMediumSizeLayout && !showLargeSizeLayout
           ? [
+              _ThemeChangeButton(
+                handleThemeChange: widget.handleThemeChange,
+              ),
               _BrightnessButton(
                 handleBrightnessChange: widget.handleBrightnessChange,
               ),
@@ -163,6 +163,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget _trailingActions() => Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          Flexible(child: _ThemeChangeButton(handleThemeChange: widget.handleThemeChange)),
           Flexible(
             child: _BrightnessButton(
               handleBrightnessChange: widget.handleBrightnessChange,
@@ -202,8 +203,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           animationController: controller,
           railAnimation: railAnimation,
           appBar: createAppBar(),
-          body: createScreenFor(
-              ScreenSelected.values[screenIndex], controller.value == 1),
+          body: createScreenFor(ScreenSelected.values[screenIndex], controller.value == 1),
           navigationRail: NavigationRail(
             extended: showLargeSizeLayout,
             destinations: navRailDestinations,
@@ -222,9 +222,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         useLightMode: widget.useLightMode,
                         handleBrightnessChange: widget.handleBrightnessChange,
                         useMaterial3: widget.useMaterial3,
-                        handleMaterialVersionChange:
-                            widget.handleMaterialVersionChange,
+                        handleMaterialVersionChange: widget.handleMaterialVersionChange,
                         handleImageSelect: widget.handleImageSelect,
+                        handleThemeChange: widget.handleThemeChange,
                         handleColorSelect: widget.handleColorSelect,
                         colorSelectionMethod: widget.colorSelectionMethod,
                         imageSelected: widget.imageSelected,
@@ -266,10 +266,31 @@ class _BrightnessButton extends StatelessWidget {
       preferBelow: showTooltipBelow,
       message: 'Toggle brightness',
       child: IconButton(
-        icon: isBright
-            ? const Icon(Icons.dark_mode_outlined)
-            : const Icon(Icons.light_mode_outlined),
+        icon: isBright ? const Icon(Icons.dark_mode_outlined) : const Icon(Icons.light_mode_outlined),
         onPressed: () => handleBrightnessChange(!isBright),
+      ),
+    );
+  }
+}
+
+class _ThemeChangeButton extends StatelessWidget {
+  const _ThemeChangeButton({
+    required this.handleThemeChange,
+    this.showTooltipBelow = true,
+  });
+
+  final Function handleThemeChange;
+  final bool showTooltipBelow;
+
+  @override
+  Widget build(BuildContext context) {
+    final isBright = Theme.of(context).brightness == Brightness.light;
+    return Tooltip(
+      preferBelow: showTooltipBelow,
+      message: 'Toggle brightness',
+      child: IconButton(
+        icon: isBright ? const Icon(Icons.dark_mode_outlined) : const Icon(Icons.light_mode_outlined),
+        onPressed: () => handleThemeChange(),
       ),
     );
   }
@@ -291,9 +312,7 @@ class _Material3Button extends StatelessWidget {
       preferBelow: showTooltipBelow,
       message: 'Switch to Material ${useMaterial3 ? 2 : 3}',
       child: IconButton(
-        icon: useMaterial3
-            ? const Icon(Icons.filter_2)
-            : const Icon(Icons.filter_3),
+        icon: useMaterial3 ? const Icon(Icons.filter_2) : const Icon(Icons.filter_3),
         onPressed: handleMaterialVersionChange,
       ),
     );
@@ -326,15 +345,13 @@ class _ColorSeedButton extends StatelessWidget {
 
           return PopupMenuItem(
             value: index,
-            enabled: currentColor != colorSelected ||
-                colorSelectionMethod != ColorSelectionMethod.colorSeed,
+            enabled: currentColor != colorSelected || colorSelectionMethod != ColorSelectionMethod.colorSeed,
             child: Wrap(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Icon(
-                    currentColor == colorSelected &&
-                            colorSelectionMethod != ColorSelectionMethod.image
+                    currentColor == colorSelected && colorSelectionMethod != ColorSelectionMethod.image
                         ? Icons.color_lens
                         : Icons.color_lens_outlined,
                     color: currentColor.color,
@@ -376,13 +393,11 @@ class _ColorImageButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       itemBuilder: (context) {
         return List.generate(ColorImageProvider.values.length, (index) {
-          ColorImageProvider currentImageProvider =
-              ColorImageProvider.values[index];
+          ColorImageProvider currentImageProvider = ColorImageProvider.values[index];
 
           return PopupMenuItem(
             value: index,
-            enabled: currentImageProvider != imageSelected ||
-                colorSelectionMethod != ColorSelectionMethod.image,
+            enabled: currentImageProvider != imageSelected || colorSelectionMethod != ColorSelectionMethod.image,
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
@@ -395,8 +410,7 @@ class _ColorImageButton extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image(
-                          image: NetworkImage(
-                              ColorImageProvider.values[index].url),
+                          image: NetworkImage(ColorImageProvider.values[index].url),
                         ),
                       ),
                     ),
@@ -422,6 +436,7 @@ class _ExpandedTrailingActions extends StatelessWidget {
     required this.handleBrightnessChange,
     required this.useMaterial3,
     required this.handleMaterialVersionChange,
+    required this.handleThemeChange,
     required this.handleColorSelect,
     required this.handleImageSelect,
     required this.imageSelected,
@@ -431,6 +446,7 @@ class _ExpandedTrailingActions extends StatelessWidget {
 
   final void Function(bool) handleBrightnessChange;
   final void Function() handleMaterialVersionChange;
+  final void Function() handleThemeChange;
   final void Function(int) handleImageSelect;
   final void Function(int) handleColorSelect;
 
@@ -451,6 +467,15 @@ class _ExpandedTrailingActions extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Row(children: [
+            const Text('Theme'),
+            Expanded(child: Container()),
+            IconButton(
+              onPressed: () {
+                handleThemeChange();
+              },
+              icon: const Icon(Icons.filter_1)),],
+          ),
           Row(
             children: [
               const Text('Brightness'),
@@ -464,9 +489,7 @@ class _ExpandedTrailingActions extends StatelessWidget {
           ),
           Row(
             children: [
-              useMaterial3
-                  ? const Text('Material 3')
-                  : const Text('Material 2'),
+              useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
               Expanded(child: Container()),
               Switch(
                   value: useMaterial3,
@@ -490,9 +513,7 @@ class _ExpandedTrailingActions extends StatelessWidget {
         ],
       ),
     );
-    return screenHeight > 740
-        ? trailingActionsBody
-        : SingleChildScrollView(child: trailingActionsBody);
+    return screenHeight > 740 ? trailingActionsBody : SingleChildScrollView(child: trailingActionsBody);
   }
 }
 
@@ -709,11 +730,7 @@ class OffsetAnimation extends CurvedAnimation {
 }
 
 class RailTransition extends StatefulWidget {
-  const RailTransition(
-      {super.key,
-      required this.animation,
-      required this.backgroundColor,
-      required this.child});
+  const RailTransition({super.key, required this.animation, required this.backgroundColor, required this.child});
 
   final Animation<double> animation;
   final Widget child;
@@ -765,11 +782,7 @@ class _RailTransition extends State<RailTransition> {
 }
 
 class BarTransition extends StatefulWidget {
-  const BarTransition(
-      {super.key,
-      required this.animation,
-      required this.backgroundColor,
-      required this.child});
+  const BarTransition({super.key, required this.animation, required this.backgroundColor, required this.child});
 
   final Animation<double> animation;
   final Color backgroundColor;

@@ -25,6 +25,7 @@ class _AppState extends State<App> {
   bool useMaterial3 = true;
   ThemeMode themeMode = ThemeMode.system;
   ColorSeed colorSelected = ColorSeed.dasboard;
+  bool isDashboard = true;
   ColorImageProvider imageSelected = ColorImageProvider.leaves;
   ColorScheme? imageColorScheme = const ColorScheme.light();
   ColorSelectionMethod colorSelectionMethod = ColorSelectionMethod.colorSeed;
@@ -72,13 +73,19 @@ class _AppState extends State<App> {
     });
   }
 
+  void handleThemeChange() {
+    setState(() {
+      this.isDashboard = !isDashboard;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material 3',
       themeMode: ThemeMode.light,
-      theme: plAgTheme,
+      theme: isDashboard ? dbAgTheme : plAgTheme,
       // ThemeData(
         // colorSchemeSeed: colorSelectionMethod == ColorSelectionMethod.colorSeed
         //     ? colorSelected.color
@@ -103,6 +110,7 @@ class _AppState extends State<App> {
         colorSelected: colorSelected,
         imageSelected: imageSelected,
         handleBrightnessChange: handleBrightnessChange,
+        handleThemeChange: handleThemeChange,
         handleMaterialVersionChange: handleMaterialVersionChange,
         handleColorSelect: handleColorSelect,
         handleImageSelect: handleImageSelect,

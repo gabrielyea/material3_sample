@@ -12,7 +12,7 @@ const agPlannerColorScheme = ColorScheme(
   onTertiary: Color.fromARGB(255, 17, 17, 17),
   inversePrimary: Colors.white,
   // surface: Color.fromARGB(255, 31, 31, 31),
-  surface: Colors.green,
+  surface: Colors.white,
   // surface: Colors.white,
   onSurface: Colors.black,
   // background: Color.fromARGB(255, 17, 17, 17),
