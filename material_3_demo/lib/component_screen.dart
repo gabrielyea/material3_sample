@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:material_3_demo/agtonomy_components/dashboard_buttons.dart';
 import 'package:material_3_demo/agtonomy_components/dashboard_navigation_rail.dart';
 
 const rowDivider = SizedBox(width: 20);
@@ -211,6 +212,7 @@ class Actions extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ComponentGroupDecoration(label: 'Actions', children: <Widget>[
       Buttons(),
+      DashboardButtons(),
       FloatingActionButtons(),
       IconToggleButtons(),
       SegmentedButtons(),
@@ -474,6 +476,26 @@ class FloatingActionButtons extends StatelessWidget {
   }
 }
 
+class DashboardButtons extends StatelessWidget {
+  const DashboardButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  ComponentDecoration(
+      label: 'Dashboard buttons',
+      tooltipMessage: 'Use FilledButton or FilledButton.tonal',
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DashboardButtonsColumn(),
+          ],
+        ),
+      ),
+    );
+  }
+}
 class Cards extends StatelessWidget {
   const Cards({super.key});
 
