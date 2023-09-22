@@ -98,7 +98,6 @@ class DashboardButtonBase extends ButtonStyle {
   @override
   MaterialStateProperty<Size> get fixedSize => MaterialStateProperty.all(Size(300, 80));
 }
-
 class WhiteDbButton extends DashboardButtonBase {
   WhiteDbButton(super.context);
 
@@ -107,7 +106,7 @@ class WhiteDbButton extends DashboardButtonBase {
         (states) {
           final theme = Theme.of(context);
           final colorScheme = theme.colorScheme;
-          return theme.brightness == Brightness.light ? colorScheme.onSurface : colorScheme.onSurface;
+          return theme.brightness == Brightness.light ? colorScheme.onBackground : colorScheme.background;
         },
       );
 
@@ -120,7 +119,6 @@ class WhiteDbButton extends DashboardButtonBase {
         },
       );
 }
-
 class GreenDbButton extends DashboardButtonBase {
   GreenDbButton(super.context);
 
@@ -142,7 +140,6 @@ class GreenDbButton extends DashboardButtonBase {
         },
       );
 }
-
 class CancelDbButton extends DashboardButtonBase {
   CancelDbButton(super.context);
 

@@ -476,40 +476,40 @@ class _ExpandedTrailingActions extends StatelessWidget {
               },
               icon: const Icon(Icons.filter_1)),],
           ),
-          Row(
-            children: [
-              const Text('Brightness'),
-              Expanded(child: Container()),
-              Switch(
-                  value: useLightMode,
-                  onChanged: (value) {
-                    handleBrightnessChange(value);
-                  })
-            ],
-          ),
-          Row(
-            children: [
-              useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
-              Expanded(child: Container()),
-              Switch(
-                  value: useMaterial3,
-                  onChanged: (_) {
-                    handleMaterialVersionChange();
-                  })
-            ],
-          ),
-          const Divider(),
-          _ExpandedColorSeedAction(
-            handleColorSelect: handleColorSelect,
-            colorSelected: colorSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
-          const Divider(),
-          _ExpandedImageColorAction(
-            handleImageSelect: handleImageSelect,
-            imageSelected: imageSelected,
-            colorSelectionMethod: colorSelectionMethod,
-          ),
+          // Row(
+          //   children: [
+          //     const Text('Brightness'),
+          //     Expanded(child: Container()),
+          //     Switch(
+          //         value: useLightMode,
+          //         onChanged: (value) {
+          //           handleBrightnessChange(value);
+          //         })
+          //   ],
+          // ),
+          // Row(
+            // children: [
+            //   useMaterial3 ? const Text('Material 3') : const Text('Material 2'),
+            //   Expanded(child: Container()),
+            //   Switch(
+            //       value: useMaterial3,
+            //       onChanged: (_) {
+            //         handleMaterialVersionChange();
+            //       })
+            // ],
+          // ),
+          // const Divider(),
+          // _ExpandedColorSeedAction(
+          //   handleColorSelect: handleColorSelect,
+          //   colorSelected: colorSelected,
+          //   colorSelectionMethod: colorSelectionMethod,
+          // ),
+          // const Divider(),
+          // _ExpandedImageColorAction(
+          //   handleImageSelect: handleImageSelect,
+          //   imageSelected: imageSelected,
+          //   colorSelectionMethod: colorSelectionMethod,
+          // ),
         ],
       ),
     );
