@@ -22,7 +22,7 @@ const agPlannerColorScheme = ColorScheme(
   error: Color.fromARGB(255, 230, 25, 25),
   // inverseSurface: Colors.white,
   // inversePrimary: Colors.white,
-  // surfaceTint: Colors.green,
+  surfaceTint: Colors.blue,
   // surfaceTint: Colors.black, // surfaces tint sets the color of different surfaces, if not defined, it will use the primary color as base
   onError: Colors.white,
   brightness: Brightness.light,
@@ -30,7 +30,7 @@ const agPlannerColorScheme = ColorScheme(
 
 const agDashboardColorScheme = ColorScheme(
   primary: Color(0xFF2A80E9),
-  onPrimary: Colors.black,
+  onPrimary: Colors.white,
   secondary: Color.fromRGBO(26, 172, 70, 1),
   onSecondary: Colors.white,
   tertiary: Color.fromARGB(255, 253, 187, 46),
@@ -53,16 +53,20 @@ const agDashboardColorScheme = ColorScheme(
 
 final autonomyTextTheme = TextTheme(
   displayLarge: AgtonomyTypography.displayLarge,
+  displayMedium: AgtonomyTypography.displayMedium,
   displaySmall: AgtonomyTypography.displaySmall,
   headlineLarge: AgtonomyTypography.headingLarge,
   headlineMedium: AgtonomyTypography.headingMedium,
   headlineSmall: AgtonomyTypography.headingSmall,
-  titleLarge: AgtonomyTypography.titleLargeRegular,
-  titleSmall: AgtonomyTypography.titleSmallRegular,
-  labelLarge: AgtonomyTypography.labelLargeRegular,
-  labelSmall: AgtonomyTypography.labelSmallBold,
-  bodyLarge: AgtonomyTypography.bodyLargeRegular,
-  bodySmall: AgtonomyTypography.bodySmallRegular,
+  titleLarge: AgtonomyTypography.titleLarge,
+  titleMedium: AgtonomyTypography.titleMedium,
+  titleSmall: AgtonomyTypography.titleSmall,
+  labelLarge: AgtonomyTypography.labelLarge,
+  labelMedium: AgtonomyTypography.labelMedium,
+  labelSmall: AgtonomyTypography.labelSmall,
+  bodyLarge: AgtonomyTypography.bodyLarge,
+  bodyMedium: AgtonomyTypography.bodyMedium,
+  bodySmall: AgtonomyTypography.bodySmall,
 );
 
 ThemeData buildThemeData(ColorScheme colorScheme, TextTheme textTheme) {

@@ -18,8 +18,8 @@ class TypographyScreen extends StatelessWidget {
           const SizedBox(height: 7),
           TextStyleExample(
               name: 'Display Large', style: textTheme.displayLarge!),
-          // TextStyleExample(
-          //     name: 'Display Medium', style: textTheme.displayMedium!),
+          TextStyleExample(
+              name: 'Display Medium', style: textTheme.displayMedium!),
           TextStyleExample(
               name: 'Display Small', style: textTheme.displaySmall!),
           TextStyleExample(
@@ -29,13 +29,13 @@ class TypographyScreen extends StatelessWidget {
           TextStyleExample(
               name: 'Headline Small', style: textTheme.headlineSmall!),
           TextStyleExample(name: 'Title Large', style: textTheme.titleLarge!),
-          // TextStyleExample(name: 'Title Medium', style: textTheme.titleMedium!),
+          TextStyleExample(name: 'Title Medium', style: textTheme.titleMedium!),
           TextStyleExample(name: 'Title Small', style: textTheme.titleSmall!),
           TextStyleExample(name: 'Label Large', style: textTheme.labelLarge!),
-          // TextStyleExample(name: 'Label Medium', style: textTheme.labelMedium!),
+          TextStyleExample(name: 'Label Medium', style: textTheme.labelMedium!),
           TextStyleExample(name: 'Label Small', style: textTheme.labelSmall!),
           TextStyleExample(name: 'Body Large', style: textTheme.bodyLarge!),
-          // TextStyleExample(name: 'Body Medium', style: textTheme.bodyMedium!),
+          TextStyleExample(name: 'Body Medium', style: textTheme.bodyMedium!),
           TextStyleExample(name: 'Body Small', style: textTheme.bodySmall!),
         ],
       ),
@@ -56,7 +56,7 @@ class TextStyleExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0),
       child: Text(name, style: style),
     );
   }

@@ -2,160 +2,156 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract final class AgtonomyTypography {
-  static const double _displayLargeFontSize = 48;
+  // Large display with 96px font size and 104px line height
+  static const double _displayLargeFontSize = 96;
+  static const double _displayLargeLineHeight = 104;
 
-  static const double _displayLargeLineHeight = 64;
 
-  static TextStyle displayLarge = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.bold,
+  static TextStyle displayLarge = GoogleFonts.roboto(
+    fontWeight: FontWeight.w800,
     fontSize: _displayLargeFontSize,
     height: _displayLargeLineHeight / _displayLargeFontSize,
   );
 
-  static const double _displaySmallFontSize = 36;
 
-  static const double _displaySmallLineHeight = 48;
+  // Medium display with 72px font size and 80px line height
+  static const double _displayMeidumFontSize = 72;
+  static const double _displayMediumLineHeight = 80;
 
-  static TextStyle displaySmall = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.bold,
+  static TextStyle displayMedium = GoogleFonts.roboto(
+    fontWeight: FontWeight.w800,
+    fontSize: _displayMeidumFontSize,
+    height: _displayMediumLineHeight / _displayMeidumFontSize,
+  );
+
+  // Small display with 48px font size and 56px line height
+  static const double _displaySmallFontSize = 48;
+  static const double _displaySmallLineHeight = 56;
+
+  static TextStyle displaySmall = GoogleFonts.roboto(
+    fontWeight: FontWeight.w800,
     fontSize: _displaySmallFontSize,
     height: _displaySmallLineHeight / _displaySmallFontSize,
   );
 
-  static const double _headingLargeFontSize = 36;
+  // Large headlline with 32px font size and 40px line height
+  static const double _headingLargeFontSize = 32;
+  static const double _headingLargeLineHeight = 40;
 
-  static const double _headingLargeLineHeight = 48;
-
-  static TextStyle headingLarge = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.w600,
+  static TextStyle headingLarge = GoogleFonts.roboto(
+    fontWeight: FontWeight.w700,
     fontSize: _headingLargeFontSize,
     height: _headingLargeLineHeight / _headingLargeFontSize,
   );
 
-  static const double _headingMediumFontSize = 32;
+  // Medium headline with 24px font size and 24px line height
+  static const double _headingMediumFontSize = 24;
+  static const double _headingMediumLineHeight = 24;
 
-  static const double _headingMediumLineHeight = 48;
-
-  static TextStyle headingMedium = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.bold,
+  static TextStyle headingMedium = GoogleFonts.roboto(
+    fontWeight: FontWeight.w700,
     fontSize: _headingMediumFontSize,
     height: _headingMediumLineHeight / _headingMediumFontSize,
   );
 
-  static const double _headingSmallFontSize = 32;
+  // Small headline with 20px font size and 24px line height
+  static const double _headingSmallFontSize = 20;
+  static const double _headingSmallLineHeight = 24;
 
-  static const double _headingSmallLineHeight = 40;
-
-  static TextStyle headingSmall = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.bold,
+  static TextStyle headingSmall = GoogleFonts.roboto(
+    fontWeight: FontWeight.w700,
     fontSize: _headingSmallFontSize,
     height: _headingSmallLineHeight / _headingSmallFontSize,
   );
 
-  static const double _titleLargeFontSize = 24;
+  // Large title with 20px font size and 24px line height
+  static const double _titleLargeFontSize = 20;
+  static const double _titleLargeLineHeight = 24;
 
-  static const double _titleLineHeight = 32;
-
-  static TextStyle titleLargeRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
-    fontSize: _titleLargeFontSize,
-    height: _titleLineHeight / _titleLargeFontSize,
-  );
-
-  static TextStyle titleLargeBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
+  static TextStyle titleLarge = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
     fontSize: _titleLargeFontSize,
-    height: _titleLineHeight / _titleLargeFontSize,
+    height: _titleLargeLineHeight / _titleLargeFontSize,
   );
 
-  static const double _titleSmallFontSize = 20;
+  // Medium title with 16px font size and 20px line height
+  static const double _titleMediumFontSize = 16;
+  static const double _titleMediumLineHeight = 20;
 
-  static TextStyle titleSmallRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
-    fontSize: _titleSmallFontSize,
-    height: _titleLineHeight / _titleSmallFontSize,
+  static TextStyle titleMedium = GoogleFonts.roboto(
+    fontWeight: FontWeight.w600,
+    fontSize: _titleMediumFontSize,
+    height: _titleMediumLineHeight / _titleMediumFontSize,
   );
 
-  static TextStyle titleSmallBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
+  // Small title with 14px font size and 16px line height
+  static const double _titleSmallFontSize = 14;
+  static const double _titleSmallLineHeight = 16;
+
+  static TextStyle titleSmall = GoogleFonts.roboto(
     fontWeight: FontWeight.w600,
     fontSize: _titleSmallFontSize,
-    height: _titleLineHeight / _titleSmallFontSize,
+    height: _titleSmallLineHeight / _titleSmallFontSize,
   );
 
-  static const double _bodyLargeFontSize = 18;
 
-  static const double _bodyLineHeight = 24;
+  // Large body with 20px font size and 24px line height
+  static const double _bodyLargeFontSize = 20;
+  static const double _bodyLargeLineHeight = 24;
 
-  static TextStyle bodyLargeRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
+  static TextStyle bodyLarge = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
     fontSize: _bodyLargeFontSize,
-    height: _bodyLineHeight / _bodyLargeFontSize,
+    height: _bodyLargeLineHeight / _bodyLargeFontSize,
   );
 
-  static TextStyle bodyLargeBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: _bodyLargeFontSize,
-    height: _bodyLineHeight / _bodyLargeFontSize,
+  // Medium body with 16px font size and 20px line height
+  static const double _bodyMediumFontSize = 16;
+  static const double _bodyMediumLineHeight = 20;
+
+  static TextStyle bodyMedium = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    fontSize: _bodyMediumFontSize,
+    height: _bodyMediumLineHeight / _bodyMediumFontSize,
   );
 
-  static const double _bodySmallFontSize = 16;
+  // Small body with 14px font size and 16px line height
+  static const double _bodySmallFontSize = 14;
+  static const double _bodySmallLineHeight = 16;
 
-  static TextStyle bodySmallRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
+  static TextStyle bodySmall = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
     fontSize: _bodySmallFontSize,
-    height: _bodyLineHeight / _bodySmallFontSize,
+    height: _bodySmallLineHeight / _bodySmallFontSize,
   );
 
-  static TextStyle bodySmallBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: _bodySmallFontSize,
-    height: _bodyLineHeight / _bodySmallFontSize,
-  );
+  // Large label with 20px font size and 24px line height
+  static const double _labelLargeFontSize = 20;
+  static const double _labelLargeLineHeight = 24;
 
-  static const double _labelLargeFontSize = 14;
-
-  static const double _labelLineHeight = 16;
-
-  static TextStyle labelLargeRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
+  static TextStyle labelLarge = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
     fontSize: _labelLargeFontSize,
-    height: _labelLineHeight / _labelLargeFontSize,
+    height: _labelLargeLineHeight / _labelLargeFontSize,
   );
 
-  static TextStyle labelLargeBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: _labelLargeFontSize,
-    height: _labelLineHeight / _labelLargeFontSize,
+  // Medium label with 16px font size and 20px line height
+  static const double _labelMediumFontSize = 16;
+  static const double _labelMediumLineHeight = 20;
+
+  static TextStyle labelMedium = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
+    fontSize: _labelMediumFontSize,
+    height: _labelMediumLineHeight / _labelMediumFontSize,
   );
 
-  static const double _labelSmallFontSize = 12;
+  // Small label with 14px font size and 16px line height
+  static const double _labelSmallFontSize = 14;
+  static const double _labelSmallLineHeight = 16;
 
-  static TextStyle labelSmallRegular = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.normal,
+  static TextStyle labelSmall = GoogleFonts.roboto(
+    fontWeight: FontWeight.w400,
     fontSize: _labelSmallFontSize,
-    height: _labelLineHeight / _labelSmallFontSize,
-  );
-
-  static TextStyle labelSmallBold = TextStyle(
-    fontFamily: GoogleFonts.roboto().fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: _labelSmallFontSize,
-    height: _labelLineHeight / _labelSmallFontSize,
+    height: _labelSmallLineHeight / _labelSmallFontSize,
   );
 }

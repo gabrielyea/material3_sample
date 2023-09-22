@@ -315,7 +315,7 @@ class _ButtonsState extends State<Buttons> {
   @override
   Widget build(BuildContext context) {
     return const ComponentDecoration(
-      label: 'Dashboard buttons',
+      label: 'Buttons',
       tooltipMessage:
           'Use ElevatedButton, FilledButton, FilledButton.tonal, OutlinedButton, or TextButton',
       child: SingleChildScrollView(
