@@ -1,27 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_3_demo/component_screen.dart';
-
-class DashboardButtons extends StatefulWidget {
-  const DashboardButtons({super.key});
-
-  @override
-  State<DashboardButtons> createState() => _DashboardButtonsState();
-}
-
-class _DashboardButtonsState extends State<DashboardButtons> {
-  @override
-  Widget build(BuildContext context) {
-    return ComponentDecoration(
-        label: "Dashboard buttons",
-        child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                DashboardButtonsColumn(),
-              ],
-            )));
-  }
-}
 
 class DashboardButtonsColumn extends StatelessWidget {
   const DashboardButtonsColumn({super.key});
@@ -54,6 +31,42 @@ class DashboardButtonsColumn extends StatelessWidget {
             ),
             onPressed: () {},
             child: Text("Dashboard cancel"),
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class DynamicDashboardButtonsColumn extends StatelessWidget {
+  const DynamicDashboardButtonsColumn({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: IntrinsicWidth(
+        child: Column(children: [
+          FilledButton(
+            onPressed: () {},
+            child: Text("Dashboard action"),
+            style: BlueActionBtn(context),
+          ),
+          SizedBox(height: 10),
+          FilledButton.icon(
+            onPressed: null,
+            icon: Icon(Icons.warning, color: Colors.amber),
+            label: Text("Dashboard warning"),
+            style: WarningButton(context),
+          ),
+          SizedBox(height: 10),
+          FilledButton.icon(
+            icon: const CircularProgressIndicator(
+              color: Colors.white30,
+            ),
+            onPressed: null,
+            label: const Text(""),
+            style: WarningButton(context),
           ),
         ]),
       ),
@@ -98,6 +111,7 @@ class DashboardButtonBase extends ButtonStyle {
   @override
   MaterialStateProperty<Size> get fixedSize => MaterialStateProperty.all(Size(300, 80));
 }
+
 class WhiteDbButton extends DashboardButtonBase {
   WhiteDbButton(super.context);
 
@@ -119,6 +133,7 @@ class WhiteDbButton extends DashboardButtonBase {
         },
       );
 }
+
 class GreenDbButton extends DashboardButtonBase {
   GreenDbButton(super.context);
 
@@ -140,6 +155,7 @@ class GreenDbButton extends DashboardButtonBase {
         },
       );
 }
+
 class CancelDbButton extends DashboardButtonBase {
   CancelDbButton(super.context);
 
@@ -158,6 +174,63 @@ class CancelDbButton extends DashboardButtonBase {
           final theme = Theme.of(context);
           final colorScheme = theme.colorScheme;
           return theme.brightness == Brightness.light ? colorScheme.onError : colorScheme.error;
+        },
+      );
+}
+
+class BlueActionBtn extends DashboardButtonBase {
+  BlueActionBtn(super.context);
+
+  @override
+  MaterialStateProperty<Color?>? get backgroundColor => MaterialStateProperty.resolveWith<Color?>(
+        (states) {
+          final theme = Theme.of(context);
+          final colorScheme = theme.colorScheme;
+          return theme.brightness == Brightness.light ? colorScheme.primary : colorScheme.onPrimary;
+        },
+      );
+
+  @override
+  MaterialStateProperty<Color?>? get foregroundColor => MaterialStateProperty.resolveWith<Color?>(
+        (states) {
+          final theme = Theme.of(context);
+          final colorScheme = theme.colorScheme;
+          return theme.brightness == Brightness.light ? colorScheme.onPrimary : colorScheme.primary;
+        },
+      );
+
+  @override
+  MaterialStateProperty<OutlinedBorder?>? get shape => MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      );
+}
+
+class WarningButton extends DashboardButtonBase {
+  WarningButton(super.context);
+
+  @override
+  MaterialStateProperty<Color?>? get backgroundColor => MaterialStateProperty.resolveWith<Color?>(
+        (states) {
+          final theme = Theme.of(context);
+          final colorScheme = theme.colorScheme;
+          return theme.brightness == Brightness.light ? colorScheme.inverseSurface : colorScheme.onInverseSurface;
+        },
+      );
+  @override
+  MaterialStateProperty<OutlinedBorder?>? get shape => MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      );
+
+  @override
+  MaterialStateProperty<Color?>? get foregroundColor => MaterialStateProperty.resolveWith<Color?>(
+        (states) {
+          final theme = Theme.of(context);
+          final colorScheme = theme.colorScheme;
+          return theme.brightness == Brightness.light ? colorScheme.onInverseSurface : colorScheme.inverseSurface;
         },
       );
 }

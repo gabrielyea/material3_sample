@@ -213,6 +213,7 @@ class Actions extends StatelessWidget {
     return const ComponentGroupDecoration(label: 'Actions', children: <Widget>[
       Buttons(),
       DashboardButtons(),
+      DynamicDashboardButtons(),
       FloatingActionButtons(),
       IconToggleButtons(),
       SegmentedButtons(),
@@ -261,7 +262,7 @@ class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ComponentGroupDecoration(label: 'Navigation', children: [
-      const BottomAppBars(),
+      // const BottomAppBars(),
       const NavigationBars(
         selectedIndex: 0,
         isExampleBar: true,
@@ -496,6 +497,28 @@ class DashboardButtons extends StatelessWidget {
     );
   }
 }
+
+class DynamicDashboardButtons extends StatelessWidget {
+  const DynamicDashboardButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ComponentDecoration(
+      label: 'Dynamic buttons',
+      tooltipMessage: 'Use FilledButton or FilledButton.tonal',
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DynamicDashboardButtonsColumn(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class Cards extends StatelessWidget {
   const Cards({super.key});
 
@@ -1225,17 +1248,17 @@ class _NavigationBarsState extends State<NavigationBars> {
       ),
     );
 
-    if (widget.isExampleBar && widget.isBadgeExample) {
-      navigationBar = ComponentDecoration(
-          label: 'Badges',
-          tooltipMessage: 'Use Badge or Badge.count',
-          child: navigationBar);
-    } else if (widget.isExampleBar) {
-      navigationBar = ComponentDecoration(
-          label: 'Navigation bar',
-          tooltipMessage: 'Use NavigationBar',
-          child: navigationBar);
-    }
+    // if (widget.isExampleBar && widget.isBadgeExample) {
+    //   navigationBar = ComponentDecoration(
+    //       label: 'Badges',
+    //       tooltipMessage: 'Use Badge or Badge.count',
+    //       child: navigationBar);
+    // } else if (widget.isExampleBar) {
+    //   navigationBar = ComponentDecoration(
+    //       label: 'Navigation bar',
+    //       tooltipMessage: 'Use NavigationBar',
+    //       child: navigationBar);
+    // }
 
     return navigationBar;
   }
@@ -1782,50 +1805,50 @@ class _BottomSheetSectionState extends State<BottomSheetSection> {
   }
 }
 
-class BottomAppBars extends StatelessWidget {
-  const BottomAppBars({super.key});
+// class BottomAppBars extends StatelessWidget {
+//   const BottomAppBars({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return ComponentDecoration(
-      label: 'Bottom app bar',
-      tooltipMessage: 'Use BottomAppBar',
-      child: Column(
-        children: [
-          SizedBox(
-            height: 80,
-            child: Scaffold(
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {},
-                elevation: 0.0,
-                child: const Icon(Icons.add),
-              ),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.endContained,
-              bottomNavigationBar: BottomAppBar(
-                child: Row(
-                  children: <Widget>[
-                    const IconButtonAnchorExample(),
-                    IconButton(
-                      tooltip: 'Search',
-                      icon: const Icon(Icons.search),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      tooltip: 'Favorite',
-                      icon: const Icon(Icons.favorite),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ComponentDecoration(
+//       label: 'Bottom app bar',
+//       tooltipMessage: 'Use BottomAppBar',
+//       child: Column(
+//         children: [
+//           SizedBox(
+//             height: 80,
+//             child: Scaffold(
+//               floatingActionButton: FloatingActionButton(
+//                 onPressed: () {},
+//                 elevation: 0.0,
+//                 child: const Icon(Icons.add),
+//               ),
+//               floatingActionButtonLocation:
+//                   FloatingActionButtonLocation.endContained,
+//               bottomNavigationBar: BottomAppBar(
+//                 child: Row(
+//                   children: <Widget>[
+//                     const IconButtonAnchorExample(),
+//                     IconButton(
+//                       tooltip: 'Search',
+//                       icon: const Icon(Icons.search),
+//                       onPressed: () {},
+//                     ),
+//                     IconButton(
+//                       tooltip: 'Favorite',
+//                       icon: const Icon(Icons.favorite),
+//                       onPressed: () {},
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class IconButtonAnchorExample extends StatelessWidget {
   const IconButtonAnchorExample({super.key});

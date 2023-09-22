@@ -10,7 +10,7 @@ class ElevationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color shadowColor = Theme.of(context).colorScheme.shadow;
-    Color surfaceTint = Theme.of(context).colorScheme.primary;
+    Color surfaceTint = Theme.of(context).colorScheme.surfaceTint;
     return Expanded(
       child: CustomScrollView(
         slivers: [

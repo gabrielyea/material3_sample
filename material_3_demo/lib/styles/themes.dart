@@ -1,26 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:material_3_demo/agtonomy_components/dashboard_buttons.dart';
 import 'package:material_3_demo/styles/typography.dart';
 
 extension CustomTextTheme on TextTheme {}
 
-MaterialColor myBlue = MaterialColor(
+Color agBlack =  Color.fromARGB(255, 17, 17, 17);
+
+MaterialColor agBlue = MaterialColor(
   0xFF2A80E9,
   {
-    50: Color.fromARGB(255, 211, 228, 249),
-    100: Color.fromARGB(255, 164, 201, 241),
-    200: Color.fromARGB(255, 116, 171, 233),
-    300: Color.fromARGB(255, 76, 149, 233),
-    400: Color.fromARGB(255, 42, 128, 233),
-    500: Color.fromARGB(255, 24, 98, 162),
-    600: Color.fromARGB(255, 17, 80, 130),
-    700: Color.fromARGB(255, 12, 64, 104),
-    800: Color.fromARGB(255, 8, 51, 82),
-    900: Color.fromARGB(255, 4, 38, 61),
+    50: Color(0xFFD3E4F9),
+    100: Color(0xFFA4C9F1),
+    200: Color(0xFF74ABE9),
+    300: Color(0xFF4C95E9),
+    400: Color(0xFF2A80E9),
+    500: Color(0xFF1862A2),
+    600: Color(0xFF104162),
+    700: Color(0xFF082D42),
+    800: Color(0xFF041B2A),
+    900: Color(0xFF010A15),
+  },
+);
+
+MaterialColor agGreen = MaterialColor(
+  0xFF1AAC46,
+  {
+      50: Color(0xFFE9F7EB),
+      100: Color(0xFFC8EFD4),
+      200: Color(0xFFA4E4BE),
+      300: Color(0xFF7ED9A8),
+      400: Color(0xFF1AAC46),
+      500: Color(0xFF128B33),
+      600: Color(0xFF0D6C26),
+      700: Color(0xFF084B1A),
+      800: Color(0xFF042C0F),
+      900: Color(0xFF010D05),
   },
 );
 
 final agPlannerColorScheme = ColorScheme(
-  primary: myBlue.shade400,
+  primary: agBlue.shade500,
   onPrimary: Colors.white,
   secondary: Color.fromRGBO(26, 172, 70, 1),
   onSecondary: Colors.white,
@@ -62,7 +81,7 @@ final dashboardScheme = buildColorScheme(
     errorColor: Color.fromARGB(255, 230, 25, 25),
     background: Colors.black,
     onBackground: Colors.white,
-    surface: Color.fromARGB(255, 31, 31, 31),
+    surface: agBlack,
     onSurface: Colors.white,
     );
 
@@ -74,7 +93,7 @@ final plannerScheme = buildColorScheme(
     background: Colors.white,
     onBackground: Colors.black,
     surface: Colors.white,
-    onSurface: Colors.black,
+    onSurface: agBlack,
     onInverseSurface: Colors.white,
     );
 
@@ -120,7 +139,8 @@ ThemeData buildThemeData(ColorScheme colorScheme, TextTheme textTheme) {
         selectedLabelTextStyle: TextStyle(color: colorScheme.primary, fontSize: 16),
         unselectedLabelTextStyle: TextStyle(color: colorScheme.onSurface, fontSize: 16),
         indicatorColor: Colors.transparent,
-      ));
+      ),
+    );
 }
 
 final dbAgTheme = buildThemeData(dashboardScheme, autonomyTextTheme);
