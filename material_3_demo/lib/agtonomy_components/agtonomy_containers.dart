@@ -21,8 +21,16 @@ class AgtonomyCardList extends StatelessWidget {
       height: 300,
       width: 374,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Align(alignment: Alignment.centerLeft, child: Text("List title", style: Theme.of(context).textTheme.titleMedium)),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text('Card List'),
+            subtitle: Text('A material card containing a list of material tiles'),
+          ),
+          Align(
+              alignment: Alignment.centerLeft,
+              child: Text("List title", style: Theme.of(context).textTheme.titleMedium)),
           Expanded(
             child: Card(
               color: Theme.of(context).colorScheme.surface,
