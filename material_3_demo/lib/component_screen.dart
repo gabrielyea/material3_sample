@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:material_3_demo/agtonomy_components/agtonomy_containers.dart';
+import 'package:material_3_demo/agtonomy_components/agtonomy_list.dart';
 import 'package:material_3_demo/agtonomy_components/dashboard_buttons.dart';
 import 'package:material_3_demo/agtonomy_components/dashboard_navigation_rail.dart';
 
@@ -41,8 +43,12 @@ class FirstComponentList extends StatelessWidget {
         colDivider,
         const Selection(),
         colDivider,
-        const TextInputs()
+        const TextInputs(),
       ],
+        colDivider,
+      const AgtonomyLists(),
+      colDivider,
+      const AgtonomyContainers(),
     ];
     List<double?> heights = List.filled(children.length, null);
 

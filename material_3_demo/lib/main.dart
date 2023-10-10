@@ -85,7 +85,7 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Material 3',
       themeMode: ThemeMode.light,
-      theme: isDashboard ? dbAgTheme : plAgTheme,
+      theme: !isDashboard ? dbAgTheme : plAgTheme,
       // ThemeData(
         // colorSchemeSeed: colorSelectionMethod == ColorSelectionMethod.colorSeed
         //     ? colorSelected.color
